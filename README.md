@@ -88,13 +88,21 @@ For an invalid email:
 
 *Expected outputs must be verified against actual workflow executions.*
 
+
 ## Screenshots
 
-Add the actual filenames from this repository.
+### Workflow Overview
+![Workflow Overview](./valid%20automation%20.png)
 
-- Workflow Overview: `![Workflow Overview](.png)`
-- Airtable Record: `(Invalid.png),(valid automation.png) `
-- Email Output: `![Email Output](Email.png)(Email.png)`
+### Valid Email Automation
+![Valid Email Automation](./Email.jpg)
+
+### Email Output
+![Email Output](./Email2.jpg)
+
+### Invalid Email Handling
+![Invalid Email Handling](./Invalid.png)
+
 
 ## Installation and Setup
 
@@ -142,7 +150,7 @@ The video should show the input submission, n8n execution, Airtable record, emai
 
 ## Project Status
 
-Status: [Completed / In Progress]
+Status: Completed 
 
 This repository is intended as a portfolio demonstration of workflow automation, API integration, AI-assisted communication, and lead management.
 

@@ -93,7 +93,7 @@ For an invalid email:
 Add the actual filenames from this repository.
 
 - Workflow Overview: `![Workflow Overview](.png)`
-- Airtable Record: `![Airtable Record](Invalid.png),(valid automation.png) `
+- Airtable Record: `(Invalid.png),(valid automation.png) `
 - Email Output: `![Email Output](Email.png)(Email.png)`
 
 ## Installation and Setup

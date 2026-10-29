@@ -102,7 +102,7 @@ _Expected outputs must be verified against actual workflow executions._
 
 ### Slack Notification
 
-![Slack](screenshorts/Slack.png)
+![Slack](screenshorts/Slack1.png)
 
 ### Airtable Record
 

@@ -39,7 +39,7 @@ Lead Form Submission
   Slack Notification
 ```
 
-*Update this diagram to match the actual node connections in your exported workflow.*
+_Update this diagram to match the actual node connections in your exported workflow._
 
 ## Features
 
@@ -86,23 +86,27 @@ For an invalid email:
 - The lead follows the invalid-data branch.
 - The workflow handles the record according to the configured validation logic.
 
-*Expected outputs must be verified against actual workflow executions.*
-
+_Expected outputs must be verified against actual workflow executions._
 
 ## Screenshots
 
-### Workflow Overview
-![Workflow Overview](./valid%20automation%20.png)
-
-### Valid Email Automation
-![Valid Email Automation](./Email.jpg)
-
 ### Email Output
-![Email Output](./Email2.jpg)
 
-### Invalid Email Handling
-![Invalid Email Handling](./Invalid.png)
+![Email 1](screenshots/Email1.png)
+![Email 2](screenshots/Email2.png)
+![Email 3](screenshots/Email3.png)
 
+### Invalid Email
+
+![Invalid Email](screenshots/Invalid.png)
+
+### Slack Notification
+
+![Slack](screenshots/Slack.png)
+
+### Airtable Record
+
+![Airtable](screenshots/valid%20Airtable.png)
 
 ## Installation and Setup
 
@@ -131,7 +135,6 @@ For an invalid email:
 
 "▶ Watch n8n Lead Capture Automation Demo" https://drive.google.com/file/d/1neIXo03xCoL0qmKw2uBDhyCZkfy3jHT4/view?usp=drivesdk
 
-
 The video should show the input submission, n8n execution, Airtable record, email output, and Slack notification.
 
 ## Security
@@ -150,15 +153,10 @@ The video should show the input submission, n8n execution, Airtable record, emai
 
 ## Project Status
 
-Status: Completed 
+Status: Completed
 
 This repository is intended as a portfolio demonstration of workflow automation, API integration, AI-assisted communication, and lead management.
 
 ## Author
 
 GitHub: [nadiya758](https://github.com/nadiya758)
-
-
-
-
-

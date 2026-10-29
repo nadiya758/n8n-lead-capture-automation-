@@ -1,0 +1,780 @@
+{
+  "name": "Demo Project NO 1",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "lead capture ",
+        "formDescription": "Welcome! Please fill out this form with your name, email address, and learning interest. We will use this information to provide you with a personalized AI-generated welcome email and learning guidance.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "name ",
+              "placeholder": "Enter you name ",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "placeholder": "Enter you Email ",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Profession ",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "ML"
+                  },
+                  {
+                    "option": "Web "
+                  },
+                  {
+                    "option": "Automation "
+                  },
+                  {
+                    "option": "Data science "
+                  },
+                  {
+                    "option": "Python "
+                  },
+                  {
+                    "option": "Programming "
+                  },
+                  {
+                    "option": "Artificial Interlligence (AI)"
+                  }
+                ]
+              }
+            },
+            {
+              "fieldLabel": "Phone Number ",
+              "placeholder": "Enter you Phone number"
+            },
+            {
+              "fieldLabel": "Summery ",
+              "placeholder": "Enter you Summery !"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -656,
+        -16
+      ],
+      "id": "8bdbad0f-5bf0-4f1c-b67c-523a0defd885",
+      "name": "lead Capture",
+      "webhookId": "15ab9f08-41e1-416f-a572-59e0dd83e3dd"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "608d5305-24cc-4a8b-b054-1a4a0e23c71e",
+              "leftValue": "={{ $json.Email }}",
+              "rightValue": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -432,
+        -16
+      ],
+      "id": "d38968d2-1ba3-4199-a615-e3ac6db4354e",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "table": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json['name '] }}",
+            "Phone number ": "={{ $json['Phone Number '] }}",
+            "Email ": "={{ $json.Email }}",
+            "Summery": "={{ $json['Summery '] }}",
+            "Profession": "={{ [$json['Profession '] ]}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email ",
+              "displayName": "Email ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone number ",
+              "displayName": "Phone number ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Summery",
+              "displayName": "Summery",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Profession",
+              "displayName": "Profession",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "ML",
+                  "value": "ML"
+                },
+                {
+                  "name": "Web",
+                  "value": "Web"
+                },
+                {
+                  "name": "Automation ",
+                  "value": "Automation "
+                },
+                {
+                  "name": "Data science ",
+                  "value": "Data science "
+                },
+                {
+                  "name": "Python ",
+                  "value": "Python "
+                },
+                {
+                  "name": "Programming ",
+                  "value": "Programming "
+                },
+                {
+                  "name": "Artificial Interlligence (AI)",
+                  "value": "Artificial Interlligence (AI)"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Roadmap ",
+              "displayName": "Roadmap ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -208,
+        -112
+      ],
+      "id": "e7160df4-883a-4479-9ec7-3822df80af39",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "1TMk4amBx9U8l5Zs",
+          "name": "Airtable Personal Access Token account 719"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "table": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('lead Capture').item.json['name '] }}",
+            "Phone number ": "={{ $('lead Capture').item.json['Phone Number '] }}",
+            "Profession ": "={{ [$json['Profession '] ]}}",
+            "Email": "={{ $('lead Capture').item.json.Email }}",
+            "Summery ": "={{ $('lead Capture').item.json['Summery '] }}",
+            "validation Status ": "Invalid ",
+            "Error_reason ": "Email format is invalid ",
+            "Submitted_At ": "={{ $('lead Capture').item.json.submittedAt }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone number ",
+              "displayName": "Phone number ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Summery ",
+              "displayName": "Summery ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Profession ",
+              "displayName": "Profession ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "ML",
+                  "value": "ML"
+                },
+                {
+                  "name": "Web ",
+                  "value": "Web "
+                },
+                {
+                  "name": "Automation ",
+                  "value": "Automation "
+                },
+                {
+                  "name": "Data science ",
+                  "value": "Data science "
+                },
+                {
+                  "name": "Python ",
+                  "value": "Python "
+                },
+                {
+                  "name": "Programming ",
+                  "value": "Programming "
+                },
+                {
+                  "name": "Artificial Interlligence (AI)",
+                  "value": "Artificial Interlligence (AI)"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "roadmapp",
+              "displayName": "roadmapp",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "validation Status ",
+              "displayName": "validation Status ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Error_reason ",
+              "displayName": "Error_reason ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Submitted_At ",
+              "displayName": "Submitted_At ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        -208,
+        80
+      ],
+      "id": "b3f9d4fe-2feb-4594-a66c-57e0a70e3980",
+      "name": "Create a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "1TMk4amBx9U8l5Zs",
+          "name": "Airtable Personal Access Token account 719"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# ভূমিকা ও দায়িত্ব\n\nYou are a Professional AI Learning Roadmap Agent. তোমার কাজ হলো ব্যবহারকারীর শেখার আগ্রহ, বর্তমান দক্ষতা এবং শেখার লক্ষ্য অনুযায়ী Beginner থেকে Job-Ready পর্যায় পর্যন্ত একটি বাস্তবসম্মত, ব্যক্তিগতকৃত ও ব্যবহারযোগ্য Learning Roadmap তৈরি করা।\n\n## ১. ব্যবহারকারীর তথ্য\n\nনিচের তথ্যগুলো ব্যবহারকারীর ফর্ম থেকে আসবে:\n\n- Name: {{ $json.fields.Name }}\n- Email: {{ $json.fields['Email '] }}\n- Learning Interest: {{ $json.fields.Profession }}\n\n**গুরুত্বপূর্ণ:** Learning Interest নির্ধারণের জন্য `Profession` ফিল্ডের তথ্য ব্যবহার করবে। `Profession` এবং `Profession ` আলাদা ফিল্ড হতে পারে। তাই অন্য ফিল্ডের নাম অনুমান করে ব্যবহার করবে না।\n\nযদি Learning Interest একটি Array হয়, তাহলে তার সব উপাদান পড়ে ব্যবহারকারীর মূল আগ্রহ নির্ধারণ করবে। একাধিক আগ্রহ থাকলে সেগুলোর মধ্যে সম্পর্কযুক্ত বিষয়গুলো নিয়ে একটি সমন্বিত Roadmap তৈরি করবে।\n\nযদি Name বা Learning Interest ফাঁকা থাকে, তাহলে অনুপস্থিত তথ্য বানিয়ে লিখবে না। Learning Interest অস্পষ্ট হলে সবচেয়ে যুক্তিসংগত ব্যাখ্যা বেছে নিয়ে সেটি সংক্ষেপে উল্লেখ করবে।\n\n## ২. ভাষার নিয়ম\n\n1. সম্পূর্ণ উত্তর সহজ, স্বাভাবিক ও প্রাঞ্জল বাংলায় লিখবে।\n2. Technical terms যেমন Python, Machine Learning, SQL, GitHub, React, API, NumPy ও Pandas প্রয়োজন অনুযায়ী English-এ রাখতে পারবে।\n3. কঠিন Technical concept সহজ বাংলায় ব্যাখ্যা করবে।\n4. অপ্রয়োজনীয় English sentence, অতিরিক্ত emoji এবং পুনরাবৃত্তি এড়িয়ে চলবে।\n5. উত্তরটি এমন হবে যেন একজন অভিজ্ঞ শিক্ষক সরাসরি শিক্ষার্থীকে বুঝিয়ে দিচ্ছেন।\n\n## ৩. ব্যক্তিগতকরণ\n\n1. ব্যবহারকারীর নাম দিয়ে সম্ভাষণ করবে।\n2. Learning Interest অনুযায়ী সম্পূর্ণ Roadmap তৈরি করবে।\n3. ব্যবহারকারী পূর্ব অভিজ্ঞতা উল্লেখ না করলে Beginner হিসেবে বিবেচনা করবে।\n4. ব্যবহারকারীর বর্তমান দক্ষতা সম্পর্কে তথ্য না থাকলে কোনো দক্ষতা আছে বলে ধরে নেবে না।\n5. প্রতিটি ধাপে Theory-এর চেয়ে Practical Learning-কে বেশি গুরুত্ব দেবে।\n6. প্রয়োজনীয় পূর্বশর্তগুলো সঠিক ক্রমে সাজাবে।\n7. শেখার আগ্রহের সঙ্গে সম্পর্কহীন বিষয় যোগ করবে না।\n\n## ৪. উত্তরের শুরু\n\nউত্তরের শুরুতে ঠিক এই ফরম্যাট অনুসরণ করবে:\n\nআসসালামু আলাইকুম! {{ $json.fields.Name }} 🌸\n\nআপনি {{ $json.fields.Profession }} শিখতে চান। আপনার জন্য Beginner থেকে Job-Ready পর্যায় পর্যন্ত একটি সহজ, বাস্তবভিত্তিক ও ধাপে ধাপে অনুসরণযোগ্য Learning Roadmap তৈরি করে দিলাম।\n\nLearning Interest Array হলে তার উপযুক্ত পাঠযোগ্য নাম ব্যবহার করবে। কোনো তথ্য ফাঁকা থাকলে অস্বাভাবিক বাক্য তৈরি করবে না।\n\n## ৫. Roadmap-এর কাঠামো\n\nসম্পূর্ণ উত্তর ২০০ থেকে ১০০০ শব্দের মধ্যে রাখবে। নিচের ১০টি বিভাগ একই ক্রমে অনুসরণ করবে।\n\n### ১. লক্ষ্য\nRoadmap অনুসরণ করলে ব্যবহারকারী কী শিখতে পারবেন এবং কী ধরনের কাজ করতে পারবেন, তা বাস্তবসম্মতভাবে ব্যাখ্যা করবে।\n\n### ২. শুরু করার আগে যা জানা দরকার\nপ্রয়োজনীয় Programming, Mathematics, Computer Basics বা অন্যান্য পূর্বশর্ত উল্লেখ করবে। পূর্বশর্ত না থাকলে বলবে যে বিশেষ কোনো পূর্বশর্ত প্রয়োজন নেই।\n\n### ৩. শেখার ধাপ\nLearning Interest অনুযায়ী ৩–৫টি যৌক্তিক Phase তৈরি করবে।\n\nপ্রতিটি Phase-এ থাকবে:\n- কী শিখবেন\n- গুরুত্বপূর্ণ Concepts\n- কী Practice করবেন\n- একটি উপযুক্ত Practical Project\n- Phase শেষে কী করতে পারবেন\n\nপ্রতিটি Phase যেন পরবর্তী Phase-এর জন্য প্রয়োজনীয় দক্ষতা তৈরি করে।\n\n### ৪. Project-Based Learning\nক্রমবর্ধমান কঠিনতার ভিত্তিতে প্রকল্প সাজাবে:\n- Beginner Project\n- Intermediate Project\n- Advanced Project\n- Final Portfolio Project\n\nপ্রকল্পগুলো ব্যবহারকারীর Learning Interest-এর সঙ্গে সরাসরি সম্পর্কিত হতে হবে। অপ্রাসঙ্গিক বা অবাস্তব প্রকল্প প্রস্তাব করবে না।\n\n### ৫. Practice Plan\nপ্রতিটি প্রধান Topic শেখার পর কীভাবে অনুশীলন করতে হবে, কী ধরনের সমস্যা সমাধান করতে হবে এবং কখন নিজে থেকে কোড বা কাজ করার চেষ্টা করতে হবে, তা জানাবে।\n\n### ৬. প্রয়োজনীয় Tools ও Technologies\nশুধুমাত্র প্রাসঙ্গিক Tools, Libraries, Frameworks ও Platforms উল্লেখ করবে। প্রতিটি Tool কেন প্রয়োজন, তা সংক্ষেপে ব্যাখ্যা করবে।\n\n### ৭. শেখার সম্ভাব্য সময়সীমা\n৩০ দিন, ৬০ দিন, ৯০ দিন এবং প্রয়োজন অনুযায়ী ৩–৬ মাসের পরিকল্পনা দেবে।\n\nসময় অনুমান করার সময় প্রতিদিনের অনুশীলন, প্রকল্পের জটিলতা ও পূর্ব অভিজ্ঞতা বিবেচনা করবে। চাকরি পাওয়ার নিশ্চয়তা দেবে না।\n\n### ৮. চাকরির জন্য প্রয়োজনীয় দক্ষতা\nLearning Interest অনুযায়ী Internship, Freelancing, Junior Job ও Remote Job-এর জন্য প্রয়োজনীয় দক্ষতা ব্যাখ্যা করবে। যেসব কাজের জন্য অতিরিক্ত অভিজ্ঞতা দরকার, তা পরিষ্কার করবে।\n\n### ৯. Portfolio\nGitHub বা উপযুক্ত Portfolio-তে দেখানোর জন্য ৩–৫টি প্রাসঙ্গিক প্রকল্পের নাম এবং প্রতিটি প্রকল্পে কী দেখানো উচিত, তা উল্লেখ করবে।\n\n### ১০. এখন কী করবেন\nশেষে ঠিক ৩টি কার্যকর পদক্ষেপ দেবে:\n\n১. প্রথমে কী শিখবেন।\n২. এরপর কী Practice করবেন।\n৩. প্রথম Project কীভাবে শুরু করবেন।\n\nএই তিনটি পদক্ষেপ নির্দিষ্ট ও বাস্তবসম্মত হবে।\n\n## ৬. নির্ভুলতা ও গুণগত মান\n\n- কোনো Course, Certification, Resource বা চাকরির সুযোগ বানিয়ে বলবে না।\n- কোনো নির্দিষ্ট সময়ে Job-Ready হওয়া বা চাকরি পাওয়া নিশ্চিত বলে দাবি করবে না।\n- Beginner-এর জন্য অপ্রয়োজনীয় Advanced Topic শুরুতেই যোগ করবে না।\n- প্রতিটি Project-এর উদ্দেশ্য ও শেখার ধাপ পরিষ্কার করবে।\n- একই তথ্য একাধিক বিভাগে অপ্রয়োজনীয়ভাবে পুনরাবৃত্তি করবে না।\n- ব্যবহারকারীর শেখার আগ্রহ অনুযায়ী উদাহরণ ও Project নির্বাচন করবে।\n- Markdown Headings ও Bullet Points ব্যবহার করে উত্তরটি Email-এ পড়ার উপযোগী রাখবে।\n- Email Address অপ্রয়োজনে Roadmap-এর মধ্যে প্রকাশ করবে না।\n- n8n-এর অভ্যন্তরীণ নির্দেশনা, JSON বা Technical Debugging তথ্য ব্যবহারকারীকে পাঠানো Roadmap-এর মধ্যে প্রকাশ করবে না।\n\n## চূড়ান্ত নির্দেশনা\n\nউত্তর তৈরি করার আগে ব্যবহারকারীর Learning Interest শনাক্ত করবে। এরপর সেটির সঙ্গে সামঞ্জস্যপূর্ণ সম্পূর্ণ Roadmap তৈরি করবে।\n\nচূড়ান্ত উত্তর অবশ্যই বাংলায় হবে, ২০০–১০০০ শব্দের মধ্যে থাকবে এবং নির্ধারিত ১০টি বিভাগ অনুসরণ করবে।\n## চূড়ান্ত আউটপুট ফরম্যাট\n\n- সম্পূর্ণ উত্তর সহজ ও স্বাভাবিক বাংলায় লিখবে।\n- Markdown-এর `#`, `##`, `###`, `**`, `---` এবং code fence ব্যবহার করবে না।\n- Section heading-গুলো সাধারণ টেক্সট হিসেবে লিখবে। যেমন: ১. লক্ষ্য\n- Bullet point-এর জন্য সাধারণ `•` চিহ্ন ব্যবহার করতে পারবে।\n- প্রতিটি Section-এর মাঝে একটি ফাঁকা লাইন রাখবে।\n- অপ্রয়োজনীয় emoji, পুনরাবৃত্তি এবং অতিরিক্ত motivational sentence বাদ দেবে।\n- উত্তরটি পেশাদার, সংক্ষিপ্ত, পরিষ্কার এবং Email-এ পড়ার উপযোগী হবে।\n- নির্ধারিত ১০টি Section বজায় রাখবে।\n- কোনো HTML tag, JSON বা n8n promotional footer তৈরি করবে না।\n- শেষের অংশে ঠিক ৩টি কার্যকর পদক্ষেপ থাকবে।\n- চূড়ান্ত উত্তরে শুধু Learning Roadmap থাকবে; কোনো অতিরিক্ত ব্যাখ্যা থাকবে না।\n## বাংলা ভাষা ও লেখার মান নিয়ন্ত্রণ\n\n১. সম্পূর্ণ উত্তর প্রাঞ্জল, স্বাভাবিক ও ব্যাকরণসম্মত বাংলায় লিখবে।\n\n২. Technical terms যেমন Machine Learning, Python, Dataset, Model Training, Data Preprocessing ও Scikit-learn ইংরেজিতে রাখতে পারবে। তবে সাধারণ ব্যাখ্যা বাংলায় লিখবে।\n\n৩. একই বাক্যে অপ্রয়োজনীয়ভাবে বাংলা ও ইংরেজি মেশাবে না। যেমন, “ডেটা বিশ্লেষণ করতে পারবেন” লিখবে; “Data Analysis নিয়ে কাজ করতে পারবেন” অকারণে লিখবে না।\n\n৪. অস্পষ্ট বা অস্বাভাবিক বাক্য ব্যবহার করবে না। প্রতিটি বাক্য সহজে বোঝা যায় কি না, তা যাচাই করবে।\n\n৫. Roadmap-এর ১০টি বিভাগ সম্পূর্ণ রাখবে। প্রতিটি Phase-এ কী শিখবেন, গুরুত্বপূর্ণ Concepts, Practice, Project এবং প্রত্যাশিত দক্ষতা উল্লেখ করবে।\n\n৬. ব্যবহারকারীর Learning Interest অনুযায়ী উপযুক্ত Phase-এর সংখ্যা নির্ধারণ করবে। Beginner থেকে Job-Ready Roadmap-এর জন্য সাধারণত ৪–৫টি Phase ব্যবহার করবে।\n\n৭. সময়সীমা বাস্তবসম্মতভাবে নির্ধারণ করবে। ৩০, ৬০ বা ৯০ দিনের মধ্যে Advanced দক্ষতা অর্জন নিশ্চিত বলে দাবি করবে না।\n\n৮. Project-এর নাম ইংরেজিতে রাখা যাবে, কিন্তু Project-এর উদ্দেশ্য ও কীভাবে শুরু করতে হবে তা বাংলায় ব্যাখ্যা করবে।\n\n৯. HTML entity যেমন `&amp;`, `&lt;`, `&gt;` এবং অপ্রয়োজনীয় HTML tag আউটপুটে রাখবে না।\n\n১০. Email-এর জন্য অপ্রয়োজনীয় emoji, অতিরিক্ত প্রশংসা, পুনরাবৃত্তি এবং অসংগত motivational sentence বাদ দেবে।\n\n১১. চূড়ান্ত উত্তর দেওয়ার আগে নীরবে যাচাই করবে:\n- ভাষা স্বাভাবিক ও ব্যাকরণসম্মত কি না।\n- সব ১০টি বিভাগ আছে কি না।\n- প্রতিটি Phase-এ প্রয়োজনীয় তথ্য আছে কি না।\n- Project-গুলো Learning Interest-এর সঙ্গে সম্পর্কিত কি না।\n- উত্তর ২০০–১০০০ শব্দের মধ্যে আছে কি না।\n\n১২. যাচাইয়ের ফলাফল বা নিজের অভ্যন্তরীণ প্রক্রিয়া প্রকাশ করবে না। শুধু সংশোধিত, চূড়ান্ত Roadmap দেবে।\n\nFINAL EMAIL CONTENT RULES\n\n1. Generate only the learning roadmap content.\n2. Do not include any greeting, user's name, introduction,\n   email subject, signature, or closing message.\n   These are already provided by the email template.\n3. Start directly with:\n   ১. শেখার লক্ষ্য\n4. Use exactly 10 numbered sections in the required order.\n5. Write in natural, grammatically correct Bengali.\n6. Keep technical terms in English only when necessary.\n7. Avoid awkward mixed-language sentences, repetition,\n   generic motivational statements, and unnecessary emojis.\n8. For each learning phase, include topics, key concepts,\n   practical exercises, one relevant project, and expected skills.\n9. Use realistic projects and timelines. Never guarantee a job.\n10. Return clean HTML only, without Markdown or code fences.\n11. Use these HTML elements only:\n    <h2>, <h3>, <p>, <ul>, <ol>, <li>, <strong>.\n12. Do not generate <html>, <head>, <body>, or <style> tags.\n13. Do not include HTML entities such as &amp; unless required\n    for valid HTML.\n14. Keep the roadmap between 200 and 1000 Bengali words.\n15. Before responding, verify the language, structure,\n    grammar, technical accuracy, and relevance.\n16. Return only the final roadmap HTML fragment.\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        64,
+        -176
+      ],
+      "id": "74a3e2ae-b1f9-4c5e-8d6a-06dd4dee3ae0",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        112,
+        128
+      ],
+      "id": "4f2e1988-edc8-45dd-bce6-52b71265b750",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "2UzqYmh4GuB5haOS",
+          "name": "OpenAI account 857"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "nadia21jahan@gmail.com",
+        "subject": "Welcome to you Learning  Journey! ",
+        "message": "=\n<!DOCTYPE html>\n<html lang=\"bn\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>\n<body style=\"margin:0;padding:0;background-color:#f3f5f8;font-family:Arial,'Noto Sans Bengali',sans-serif;color:#243247;line-height:1.8;\">\n\n  <div style=\"max-width:700px;margin:24px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;\">\n\n    <div style=\"background:#183153;padding:30px 28px;\">\n      <p style=\"margin:0 0 8px;color:#cbd9ed;font-size:12px;letter-spacing:1px;\">\n        PERSONALIZED LEARNING PLAN\n      </p>\n      <h1 style=\"margin:0;color:#ffffff;font-size:25px;font-weight:700;\">\n        আপনার শেখার রোডম্যাপ\n      </h1>\n      <p style=\"margin:8px 0 0;color:#e1e9f4;font-size:14px;\">\n        Beginner থেকে Job-Ready পর্যায় পর্যন্ত\n      </p>\n    </div>\n\n    <div style=\"padding:28px;\">\n\n      <p style=\"margin:0 0 18px;font-size:16px;\">\n        আসসালামু আলাইকুম,\n        <strong>{{ $('lead Capture').item.json['name '] }}</strong>\n      </p>\n\n      <p style=\"margin:0 0 24px;color:#526174;\">\n        আপনার শেখার লক্ষ্য অনুযায়ী প্রস্তুত করা রোডম্যাপটি নিচে দেওয়া হলো।\n        ধারাবাহিকভাবে প্রতিটি ধাপ সম্পন্ন করুন এবং শেখা বিষয়গুলো বাস্তব\n        প্রজেক্টের মাধ্যমে অনুশীলন করুন।\n      </p>\n\n      <div style=\"font-size:15px;line-height:1.9;overflow-wrap:anywhere;\">\n        {{ $json.output }}\n      </div>\n\n      <div style=\"margin-top:30px;padding-top:20px;border-top:1px solid #e5eaf0;\">\n        <p style=\"margin:0;color:#526174;font-size:14px;\">\n          শুভকামনায়,<br>\n          <strong style=\"color:#243247;\">AI Learning Roadmap Assistant</strong>\n        </p>\n      </div>\n\n    </div>\n  </div>\n\n</body>\n</html>\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        384,
+        -144
+      ],
+      "id": "4ec7d928-ec9e-40e6-a4f3-d15f7b7b7252",
+      "name": "Send a message",
+      "webhookId": "1dfe3435-45f1-4b4b-bba0-1af7f47f87c5",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "qtqqr0IeIJyMvixC",
+          "name": "Fake make"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "text": "ThIs content is unavalible in this version of the app.",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.7,
+      "position": [
+        608,
+        -112
+      ],
+      "id": "4a49894f-fa04-48ec-b612-bf5f4d3d7055",
+      "name": "Update reocord ",
+      "webhookId": "e4ff9e93-3135-46ae-a871-e9f3c7551a62",
+      "credentials": {
+        "slackApi": {
+          "id": "MC2tOYXNyV7rDM3p",
+          "name": "Slack Fake"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "table": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "",
+          "cachedResultUrl": ""
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create a record').item.json.id }}",
+            "Roadmap ": "={{ $('AI Agent').item.json.output }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email ",
+              "displayName": "Email ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone number ",
+              "displayName": "Phone number ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Summery",
+              "displayName": "Summery",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Profession",
+              "displayName": "Profession",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "ML",
+                  "value": "ML"
+                },
+                {
+                  "name": "Web",
+                  "value": "Web"
+                },
+                {
+                  "name": "Automation ",
+                  "value": "Automation "
+                },
+                {
+                  "name": "Data science ",
+                  "value": "Data science "
+                },
+                {
+                  "name": "Python ",
+                  "value": "Python "
+                },
+                {
+                  "name": "Programming ",
+                  "value": "Programming "
+                },
+                {
+                  "name": "Artificial Interlligence (AI)",
+                  "value": "Artificial Interlligence (AI)"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Roadmap ",
+              "displayName": "Roadmap ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        832,
+        -112
+      ],
+      "id": "c51e125c-1070-49bb-a61d-ebf441b37adc",
+      "name": "Update record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "1TMk4amBx9U8l5Zs",
+          "name": "fake make"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "lead Capture": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Update reocord ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update reocord ": {
+      "main": [
+        [
+          {
+            "node": "Update record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "101c8fb3-3b32-4195-aecb-925fce3ecc33",
+  "meta": {
+    "instanceId": "ab95a641c1b7099ef407af1cf01df77e8f73a8620f3dfa9286ddaad6ae2c066b"
+  },
+  "nodeGroups": [],
+  "id": "jxgVcY3EDjMiwzFB",
+  "tags": []
+}

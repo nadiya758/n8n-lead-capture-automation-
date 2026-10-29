@@ -92,21 +92,21 @@ _Expected outputs must be verified against actual workflow executions._
 
 ### Email Output
 
-![Email 1](screenshots/Email1.png)
-![Email 2](screenshots/Email2.png)
-![Email 3](screenshots/Email3.png)
+![Email 1](screenshorts/Email1.png)
+![Email 2](screenshorts/Email2.png)
+![Email 3](screenshorts/Email3.png)
 
 ### Invalid Email
 
-![Invalid Email](screenshots/Invalid.png)
+![Invalid Email](screenshorts/Invalid.png)
 
 ### Slack Notification
 
-![Slack](screenshots/Slack.png)
+![Slack](screenshorts/Slack.png)
 
 ### Airtable Record
 
-![Airtable](screenshots/valid%20Airtable.png)
+![Airtable](screenshorts/valid%20Airtable.png)
 
 ## Installation and Setup
 

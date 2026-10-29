@@ -61,12 +61,12 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.6,
       "position": [
-        -656,
-        -16
+        0,
+        160
       ],
-      "id": "8bdbad0f-5bf0-4f1c-b67c-523a0defd885",
+      "id": "48bfebf6-cdb9-4eac-8e3d-a9870c66d8ca",
       "name": "lead Capture",
-      "webhookId": "15ab9f08-41e1-416f-a572-59e0dd83e3dd"
+      "webhookId": "9c4ab039-24d9-428e-9f36-b2d41d4ab9e7"
     },
     {
       "parameters": {
@@ -95,10 +95,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -432,
-        -16
+        224,
+        160
       ],
-      "id": "d38968d2-1ba3-4199-a615-e3ac6db4354e",
+      "id": "78690045-1abe-4394-a13e-eb4f387709e1",
       "name": "If"
     },
     {
@@ -234,15 +234,15 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        -208,
-        -112
+        448,
+        64
       ],
-      "id": "e7160df4-883a-4479-9ec7-3822df80af39",
+      "id": "f451f905-4499-4738-92e5-3702f3c63f6c",
       "name": "Create a record",
       "credentials": {
         "airtableTokenApi": {
           "id": "1TMk4amBx9U8l5Zs",
-          "name": "Airtable Personal Access Token account 719"
+          "name": "fake make"
         }
       }
     },
@@ -415,15 +415,15 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        -208,
-        80
+        448,
+        256
       ],
-      "id": "b3f9d4fe-2feb-4594-a66c-57e0a70e3980",
+      "id": "e01b7cc2-4a6e-4296-a179-89bf1ec3c636",
       "name": "Create a record1",
       "credentials": {
         "airtableTokenApi": {
           "id": "1TMk4amBx9U8l5Zs",
-          "name": "Airtable Personal Access Token account 719"
+          "name": "fake make"
         }
       }
     },
@@ -436,10 +436,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        64,
-        -176
+        720,
+        0
       ],
-      "id": "74a3e2ae-b1f9-4c5e-8d6a-06dd4dee3ae0",
+      "id": "43af1de0-0ee1-4269-8513-1947deb7f2f6",
       "name": "AI Agent"
     },
     {
@@ -457,21 +457,21 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        112,
-        128
+        768,
+        304
       ],
-      "id": "4f2e1988-edc8-45dd-bce6-52b71265b750",
+      "id": "77de8993-5cb9-4be8-82f3-7b3186042b91",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
           "id": "2UzqYmh4GuB5haOS",
-          "name": "OpenAI account 857"
+          "name": "Fake Url"
         }
       }
     },
     {
       "parameters": {
-        "sendTo": {{ $('lead Capture').item.json.Email }},
+        "sendTo": "={{ $('lead Capture').item.json.Email }}",
         "subject": "Welcome to you Learning  Journey! ",
         "message": "=\n<!DOCTYPE html>\n<html lang=\"bn\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>\n<body style=\"margin:0;padding:0;background-color:#f3f5f8;font-family:Arial,'Noto Sans Bengali',sans-serif;color:#243247;line-height:1.8;\">\n\n  <div style=\"max-width:700px;margin:24px auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;\">\n\n    <div style=\"background:#183153;padding:30px 28px;\">\n      <p style=\"margin:0 0 8px;color:#cbd9ed;font-size:12px;letter-spacing:1px;\">\n        PERSONALIZED LEARNING PLAN\n      </p>\n      <h1 style=\"margin:0;color:#ffffff;font-size:25px;font-weight:700;\">\n        আপনার শেখার রোডম্যাপ\n      </h1>\n      <p style=\"margin:8px 0 0;color:#e1e9f4;font-size:14px;\">\n        Beginner থেকে Job-Ready পর্যায় পর্যন্ত\n      </p>\n    </div>\n\n    <div style=\"padding:28px;\">\n\n      <p style=\"margin:0 0 18px;font-size:16px;\">\n        আসসালামু আলাইকুম,\n        <strong>{{ $('lead Capture').item.json['name '] }}</strong>\n      </p>\n\n      <p style=\"margin:0 0 24px;color:#526174;\">\n        আপনার শেখার লক্ষ্য অনুযায়ী প্রস্তুত করা রোডম্যাপটি নিচে দেওয়া হলো।\n        ধারাবাহিকভাবে প্রতিটি ধাপ সম্পন্ন করুন এবং শেখা বিষয়গুলো বাস্তব\n        প্রজেক্টের মাধ্যমে অনুশীলন করুন।\n      </p>\n\n      <div style=\"font-size:15px;line-height:1.9;overflow-wrap:anywhere;\">\n        {{ $json.output }}\n      </div>\n\n      <div style=\"margin-top:30px;padding-top:20px;border-top:1px solid #e5eaf0;\">\n        <p style=\"margin:0;color:#526174;font-size:14px;\">\n          শুভকামনায়,<br>\n          <strong style=\"color:#243247;\">AI Learning Roadmap Assistant</strong>\n        </p>\n      </div>\n\n    </div>\n  </div>\n\n</body>\n</html>\n",
         "options": {
@@ -481,10 +481,10 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        384,
-        -144
+        1040,
+        32
       ],
-      "id": "4ec7d928-ec9e-40e6-a4f3-d15f7b7b7252",
+      "id": "5c2c8055-6080-43e1-9002-7ff93f9a5b06",
       "name": "Send a message",
       "webhookId": "1dfe3435-45f1-4b4b-bba0-1af7f47f87c5",
       "credentials": {
@@ -510,10 +510,10 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.7,
       "position": [
-        608,
-        -112
+        1264,
+        64
       ],
-      "id": "4a49894f-fa04-48ec-b612-bf5f4d3d7055",
+      "id": "b3db5774-2ffc-4499-80ee-a36e851c3f0d",
       "name": "Update reocord ",
       "webhookId": "e4ff9e93-3135-46ae-a871-e9f3c7551a62",
       "credentials": {
@@ -665,10 +665,10 @@
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.2,
       "position": [
-        832,
-        -112
+        1488,
+        64
       ],
-      "id": "c51e125c-1070-49bb-a61d-ebf441b37adc",
+      "id": "ce3af62d-09ce-45f6-b789-a8bb6d8a6dd0",
       "name": "Update record",
       "credentials": {
         "airtableTokenApi": {
@@ -770,11 +770,11 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "101c8fb3-3b32-4195-aecb-925fce3ecc33",
+  "versionId": "65b0bd33-50dc-44d5-9fdf-ec122fa38b51",
   "meta": {
     "instanceId": "ab95a641c1b7099ef407af1cf01df77e8f73a8620f3dfa9286ddaad6ae2c066b"
   },
   "nodeGroups": [],
-  "id": "jxgVcY3EDjMiwzFB",
+  "id": "7fQXwV09k4WbQ7gv",
   "tags": []
 }
